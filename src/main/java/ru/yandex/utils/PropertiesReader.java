@@ -11,6 +11,7 @@ import java.util.Properties;
 /**
  * Class Properties reader.
  */
+@SuppressWarnings("PMD.ClassNamingConventions")
 public final class PropertiesReader {
     /**
      * Constant LOGGER.

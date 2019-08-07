@@ -4,6 +4,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
+import java.util.Arrays;
 import java.util.List;
 import java.util.logging.Logger;
 
@@ -28,7 +29,7 @@ public class ParseMainPage extends PageObject {
     /**
      * Find By.
      */
-    @FindBy(css = "div[class='popup__content']")
+    @FindBy(css = "div[class='popup__content'] li")
     private List<WebElement> listOfElements;
 
 
@@ -54,14 +55,17 @@ public class ParseMainPage extends PageObject {
     }
 
     /**
-     * Get result.
+     * Return result.
      *
-     * @param data the data
-     * @return the result
+     * @param data the data.
+     * @return the result.
      */
     public ParseMainPage returnResult(final String data) {
-        LOG.info("Information for " + data + " -  " + listOfElements.get(0).getText());
+        for (final WebElement element : listOfElements) {
+            LOG.info("Information for " + data + " -  " + Arrays.toString(element.getText().split("\\d+\\°C")));
+        }
         getDriver().navigate().refresh();
+
         return this;
     }
 }

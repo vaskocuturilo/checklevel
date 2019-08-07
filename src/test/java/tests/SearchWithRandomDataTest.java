@@ -8,7 +8,7 @@ public class SearchWithRandomDataTest extends BaseWeb {
 
     @DataProvider(name = "providerMethod")
     public Object[][] dataProviderMethod() {
-        return new Object[][]{{"Погода"}, {"Болото"}, {"Липецк"}};
+        return new Object[][]{{"погода"}, {"лото"}, {"липецк"}};
     }
 
     @org.testng.annotations.Test(description = "Parse information for main page yandex.ru", dataProvider = "providerMethod")
