@@ -15,7 +15,7 @@ You will need the following technologies available to try it out:
 
 - [x] ability to run tests for different browsers configuring;
 
-```mvn clean test -Denv=prod -Dbrowser=firefox``` 
+```mvn clean test -Dbrowser=firefox``` 
 
 
 
