@@ -11,6 +11,7 @@ import java.util.logging.Logger;
 /**
  * Class ParseMainPage.
  */
+@SuppressWarnings({"PMD.LawOfDemeter", "PMD.BeanMembersShouldSerialize", "PMD.GuardLogStatement"})
 public class ParseMainPage extends PageObject {
 
     /**

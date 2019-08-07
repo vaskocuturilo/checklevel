@@ -1,18 +1,22 @@
 package ru.yandex.base;
 
-import io.github.bonigarcia.wdm.WebDriverManager;
+import io.github.bonigarcia.wdm.ChromeDriverManager;
+import io.github.bonigarcia.wdm.DriverManagerType;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
+import org.testng.annotations.Optional;
+import org.testng.annotations.Parameters;
 import ru.yandex.utils.PropertiesReader;
 
 import java.util.concurrent.TimeUnit;
 
-
 /**
  * Class Base web.
  */
+@SuppressWarnings({"PMD.LawOfDemeter", "PMD.BeanMembersShouldSerialize"})
 public class BaseWeb {
 
     /**
@@ -49,16 +53,27 @@ public class BaseWeb {
     /**
      * Method Start.
      *
+     * @param browser different browser.
      * @throws Exception the exception
      */
-    @BeforeTest
-    public void start() {
+    @Parameters({"browser"})
+    @BeforeTest()
+    public void start(@Optional("Chrome") final String browser) {
+
         if (threadLocal.get() != null) {
             driver = threadLocal.get();
             return;
         }
-        WebDriverManager.chromedriver().setup();
-        driver = new ChromeDriver();
+        if ("chrome".equals(browser)) {
+            ChromeDriverManager.getInstance(DriverManagerType.CHROME).setup();
+            driver = new ChromeDriver();
+        } else if ("firefox".equals(browser)) {
+            ChromeDriverManager.getInstance(DriverManagerType.FIREFOX).setup();
+            driver = new FirefoxDriver();
+        } else {
+            throw new IllegalStateException(" Browser " + browser + " not supported in this tests. ");
+        }
+
         driver.navigate().to(PropertiesReader.loadProperty("URL"));
         driver.manage().timeouts().implicitlyWait(DELAY, TimeUnit.SECONDS);
         threadLocal.set(driver);
