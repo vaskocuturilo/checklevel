@@ -71,7 +71,7 @@ public class ParseMainPage extends PageObject {
     }
 
     /**
-     * Return result.
+     * Method return result after parse. return only string with "°C".
      *
      * @param data the data.
      * @return the result.

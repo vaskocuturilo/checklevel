@@ -88,16 +88,16 @@ public class ImagesPage extends PageObject {
 
     private void verifyImagesLinks() {
         for (final WebElement image : listOfImages) {
-            isImageBroken(image);
+            isImagesBroken(image);
         }
     }
 
     /**
-     * Method isImageBroken.
+     * Method isImagesBroken.
      *
      * @param listOfImages lis of tests.parse.images.
      */
-    private void isImageBroken(final WebElement listOfImages) {
+    private void isImagesBroken(final WebElement listOfImages) {
         if (listOfImages.getAttribute("href").equals("0")) {
             LOG.info(listOfImages.getAttribute("outerHTML") + " is broken.");
         }
