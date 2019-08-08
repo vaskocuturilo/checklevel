@@ -1,8 +1,10 @@
-package tests;
+package parse;
 
 import org.testng.annotations.DataProvider;
 import ru.yandex.base.BaseWeb;
 import ru.yandex.pages.ParseMainPage;
+import org.testng.annotations.Test;
+
 
 public class SearchWithRandomDataTest extends BaseWeb {
 
@@ -11,7 +13,7 @@ public class SearchWithRandomDataTest extends BaseWeb {
         return new Object[][]{{"погода"}, {"лото"}, {"липецк"}};
     }
 
-    @org.testng.annotations.Test(description = "Parse information for main page yandex.ru", dataProvider = "providerMethod")
+    @Test(description = "Parse information from main page yandex.ru", dataProvider = "providerMethod")
     public void checkHintFromMainSearchPage(String inputDataForSearch) {
         ParseMainPage parseMainPage = new ParseMainPage(getDriver());
         parseMainPage.searchWithData(inputDataForSearch);

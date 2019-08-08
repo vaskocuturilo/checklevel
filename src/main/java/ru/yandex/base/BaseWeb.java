@@ -58,7 +58,7 @@ public class BaseWeb {
      */
     @Parameters({"browser"})
     @BeforeTest()
-    public void start(@Optional("Chrome") final String browser) {
+    public void start(@Optional("chrome") final String browser) {
 
         if (threadLocal.get() != null) {
             driver = threadLocal.get();

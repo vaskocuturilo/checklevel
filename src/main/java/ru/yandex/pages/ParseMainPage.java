@@ -2,7 +2,9 @@ package ru.yandex.pages;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.CacheLookup;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.How;
 
 import java.util.Arrays;
 import java.util.List;
@@ -20,16 +22,30 @@ public class ParseMainPage extends PageObject {
      */
     private static final Logger LOG = Logger.getLogger(ParseMainPage.class.getName());
 
+
+    /**
+     * Value for FindBy searchField.
+     */
+    private static final String FIELD_FOR_SEARCH = "input[id='text']";
+
+
+    /**
+     * Value for FindBy searchField.
+     */
+    private static final String LIST_OF_ELEMENTS = "div[class='popup__content'] li";
+
     /**
      * Find By.
      */
-    @FindBy(id = "text")
+    @FindBy(how = How.CSS, using = FIELD_FOR_SEARCH)
+    @CacheLookup
     private WebElement searchField;
 
     /**
      * Find By.
      */
-    @FindBy(css = "div[class='popup__content'] li")
+    @FindBy(how = How.CSS, using = LIST_OF_ELEMENTS)
+    @CacheLookup
     private List<WebElement> listOfElements;
 
 
