@@ -26,7 +26,7 @@ public class ImagesPage extends PageObject {
      * Value LIST_OF_IMAGES.
      */
 
-    private static final String LIST_OF_IMAGES = "div[id='main'] [style*='padding-top'] a[href]";
+    private static final String LIST_OF_IMAGES = "div[id='main'] [style*='padding-top'] a";
 
     /**
      * Value LOG.
