@@ -65,7 +65,7 @@ public class ParseMainPage extends PageObject {
      * @return the parse main page
      */
     public ParseMainPage searchWithData(final String dataForSearch) {
-        this.searchField.sendKeys(dataForSearch);
+        searchField.sendKeys(dataForSearch);
 
         return this;
     }

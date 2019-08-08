@@ -1,5 +1,6 @@
 package ru.yandex.pages;
 
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.CacheLookup;
@@ -8,6 +9,8 @@ import org.openqa.selenium.support.How;
 
 import java.util.List;
 import java.util.logging.Logger;
+
+import static org.testng.Assert.assertEquals;
 
 /**
  * The type Images page.
@@ -23,7 +26,7 @@ public class ImagesPage extends PageObject {
      * Value LIST_OF_IMAGES.
      */
 
-    private static final String LIST_OF_IMAGES = "div[id='main'] [style*='padding-top'] a";
+    private static final String LIST_OF_IMAGES = "div[id='main'] [style*='padding-top'] a[href]";
 
     /**
      * Value LOG.
@@ -59,10 +62,23 @@ public class ImagesPage extends PageObject {
      * @return this.
      */
     public ImagesPage selectImagesTab() {
-        this.imagesTab.click();
+        imagesTab.click();
+
+        checkThatPageIsCompletelyLoaded();
 
         verifyImagesLinks();
 
+        return this;
+    }
+
+    /**
+     * Method checkThatPageIsCompletelyLoaded.
+     *
+     * @return this.
+     */
+    public ImagesPage checkThatPageIsCompletelyLoaded() {
+        final JavascriptExecutor executor = (JavascriptExecutor) getDriver();
+        assertEquals("complete", executor.executeScript("return document.readyState"));
         return this;
     }
 
