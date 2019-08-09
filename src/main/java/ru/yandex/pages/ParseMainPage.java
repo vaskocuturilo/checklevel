@@ -78,7 +78,7 @@ public class ParseMainPage extends PageObject {
      */
     public ParseMainPage returnResult(final String data) {
         for (final WebElement element : listOfElements) {
-            LOG.info("Information for " + data + " -  " + Arrays.toString(element.getText().split("\\d+\\°C")));
+            LOG.info("Information for " + data + " -  " + Arrays.toString(element.getText().split("[^\\d\\°C]+")));
         }
         getDriver().navigate().refresh();
 
