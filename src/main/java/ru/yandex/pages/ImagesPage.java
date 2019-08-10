@@ -1,11 +1,14 @@
 package ru.yandex.pages;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.CacheLookup;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.util.List;
 import java.util.logging.Logger;
@@ -25,13 +28,23 @@ public class ImagesPage extends PageObject {
     /**
      * Value LIST_OF_IMAGES.
      */
-
     private static final String LIST_OF_IMAGES = "div[id='main'] [style*='padding-top'] a";
+
+    /**
+     * Value VOICE_BUTTON.
+     */
+    private static final String VOICE_BUTTON = "form[data-lego='react'] span[class*='icon icon_type_voice']";
 
     /**
      * Value LOG.
      */
     private static final Logger LOG = Logger.getLogger(ParseMainPage.class.getName());
+
+
+    /**
+     * Value wait.
+     */
+    private WebDriverWait wait = new WebDriverWait(getDriver(), 10);
 
     /**
      * Find By.
@@ -62,9 +75,12 @@ public class ImagesPage extends PageObject {
      * @return this.
      */
     public ImagesPage selectImagesTab() {
+
         imagesTab.click();
 
         checkThatPageIsCompletelyLoaded();
+
+        wait.until(ExpectedConditions.presenceOfElementLocated(By.cssSelector(VOICE_BUTTON))).isDisplayed();
 
         verifyImagesLinks();
 

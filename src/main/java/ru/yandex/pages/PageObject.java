@@ -7,7 +7,7 @@ import org.openqa.selenium.support.PageFactory;
 /**
  * Class Page object.
  */
-public class PageObject {
+public abstract class PageObject {
 
     /**
      * Private driver.
@@ -31,6 +31,17 @@ public class PageObject {
     public PageObject(final WebDriver webDriver) {
         this.driver = webDriver;
         PageFactory.initElements(webDriver, this);
+    }
+
+
+    /**
+     * Method checkTitle.
+     *
+     * @return title.
+     */
+    public String checkTitle() {
+
+        return driver.getTitle();
     }
 
 }

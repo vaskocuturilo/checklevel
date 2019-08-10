@@ -23,10 +23,7 @@ public class BaseWeb {
      * Value threadLocal.
      */
     private final ThreadLocal<WebDriver> threadLocal = new ThreadLocal<>();
-    /**
-     * Constant DELAY.
-     */
-    private static final int DELAY = 10;
+
     /**
      * driver.
      */
@@ -74,8 +71,8 @@ public class BaseWeb {
             throw new IllegalStateException(" Browser " + browser + " not supported in this tests. ");
         }
 
-        driver.navigate().to(PropertiesReader.loadProperty("URL"));
-        driver.manage().timeouts().implicitlyWait(DELAY, TimeUnit.SECONDS);
+        driver.get(PropertiesReader.loadProperty("URL"));
+
         threadLocal.set(driver);
     }
 
