@@ -9,6 +9,7 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import ru.yandex.tms.TestLinkService;
 
 import java.util.List;
 import java.util.logging.Logger;
@@ -19,7 +20,7 @@ import static org.testng.Assert.assertEquals;
  * The type Images page.
  */
 @SuppressWarnings({"PMD.LawOfDemeter", "PMD.BeanMembersShouldSerialize", "PMD.GuardLogStatement"})
-public class ImagesPage extends PageObject {
+public class ImagesPage extends AbstractPageObject {
     /**
      * Value IMAGES.
      */
@@ -44,7 +45,7 @@ public class ImagesPage extends PageObject {
     /**
      * Value wait.
      */
-    private WebDriverWait wait = new WebDriverWait(getDriver(), 10);
+    private final WebDriverWait wait = new WebDriverWait(getDriver(), 10);
 
     /**
      * Find By.
@@ -61,7 +62,7 @@ public class ImagesPage extends PageObject {
     private List<WebElement> listOfImages;
 
     /**
-     * Method PageObject.
+     * Method AbstractPageObject.
      *
      * @param webDriver driver.
      */
@@ -74,17 +75,17 @@ public class ImagesPage extends PageObject {
      *
      * @return this.
      */
-    public ImagesPage selectImagesTab() {
+    public TestLinkService selectImagesTab() {
 
         imagesTab.click();
 
-        checkThatPageIsCompletelyLoaded();
+        final WebElement voiceElement = wait.until(ExpectedConditions.presenceOfElementLocated(By.cssSelector(VOICE_BUTTON)));
 
-        wait.until(ExpectedConditions.presenceOfElementLocated(By.cssSelector(VOICE_BUTTON))).isDisplayed();
+        voiceElement.isEnabled();
 
         verifyImagesLinks();
 
-        return this;
+        return new TestLinkService();
     }
 
     /**

@@ -9,8 +9,7 @@ public class CheckImagesTest extends BaseWeb {
     @Test(description = "Test for check all images on page yandex.ru/images.")
     public void checkImagesExists() {
         ImagesPage imagesPage = new ImagesPage(getDriver());
-        imagesPage.selectImagesTab();
-
-
+        imagesPage.selectImagesTab()
+                .addTestLinkResult(CheckImagesTest.class.getSimpleName());
     }
 }

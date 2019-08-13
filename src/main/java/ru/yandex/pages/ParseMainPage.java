@@ -5,6 +5,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.CacheLookup;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
+import ru.yandex.tms.TestLinkService;
 
 import java.util.Arrays;
 import java.util.List;
@@ -15,7 +16,7 @@ import java.util.logging.Logger;
  * Class ParseMainPage.
  */
 @SuppressWarnings({"PMD.LawOfDemeter", "PMD.BeanMembersShouldSerialize", "PMD.GuardLogStatement"})
-public class ParseMainPage extends PageObject {
+public class ParseMainPage extends AbstractPageObject {
 
     /**
      * Value LOG.
@@ -76,12 +77,12 @@ public class ParseMainPage extends PageObject {
      * @param data the data.
      * @return the result.
      */
-    public ParseMainPage returnResult(final String data) {
+    public TestLinkService returnResult(final String data) {
         for (final WebElement element : listOfElements) {
             LOG.info("Information for " + data + " -  " + Arrays.toString(element.getText().split("[^\\d\\°C]+")));
         }
         getDriver().navigate().refresh();
 
-        return this;
+        return new TestLinkService();
     }
 }

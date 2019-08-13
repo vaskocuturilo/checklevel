@@ -5,9 +5,9 @@ import org.openqa.selenium.support.PageFactory;
 
 
 /**
- * Class Page object.
+ * Class AbstractPageObject.
  */
-public abstract class PageObject {
+public abstract class AbstractPageObject {
 
     /**
      * Private driver.
@@ -24,11 +24,11 @@ public abstract class PageObject {
     }
 
     /**
-     * Method PageObject.
+     * Method AbstractPageObject.
      *
      * @param webDriver driver.
      */
-    public PageObject(final WebDriver webDriver) {
+    public AbstractPageObject(final WebDriver webDriver) {
         this.driver = webDriver;
         PageFactory.initElements(webDriver, this);
     }

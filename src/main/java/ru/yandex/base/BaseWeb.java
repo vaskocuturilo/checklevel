@@ -11,8 +11,6 @@ import org.testng.annotations.Optional;
 import org.testng.annotations.Parameters;
 import ru.yandex.utils.PropertiesReader;
 
-import java.util.concurrent.TimeUnit;
-
 /**
  * Class Base web.
  */
