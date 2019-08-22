@@ -54,7 +54,7 @@ public class TestLinkService {
      *
      * @param testCase the test case.
      */
-    public void addTestLinkResult(final String testCase) {
+    public static void addTestLinkResult(final String testCase) {
 
         final TestLinkAPIClient testLinkAPIClient = new TestLinkAPIClient(
                 loadProperty("API_KEY"), loadProperty("TEST_LINK_URL"));

@@ -1,5 +1,6 @@
 package ru.yandex.pages;
 
+import org.checkerframework.checker.nullness.compatqual.NullableDecl;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
@@ -7,6 +8,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.CacheLookup;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
+import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import ru.yandex.tms.TestLinkService;
@@ -41,12 +43,6 @@ public class ImagesPage extends AbstractPageObject {
      */
     private static final Logger LOG = Logger.getLogger(ParseMainPage.class.getName());
 
-
-    /**
-     * Value wait.
-     */
-    private final WebDriverWait wait = new WebDriverWait(getDriver(), 10);
-
     /**
      * Find By.
      */
@@ -79,7 +75,14 @@ public class ImagesPage extends AbstractPageObject {
 
         imagesTab.click();
 
-        final WebElement voiceElement = wait.until(ExpectedConditions.presenceOfElementLocated(By.cssSelector(VOICE_BUTTON)));
+        final WebElement voiceElement = (new WebDriverWait(getDriver(), 10))
+                .until(new ExpectedCondition<WebElement>() {
+                    @NullableDecl
+                    @Override
+                    public WebElement apply(@NullableDecl WebDriver webDriver) {
+                        return webDriver.findElement(By.cssSelector(VOICE_BUTTON));
+                    }
+                });
 
         voiceElement.isEnabled();
 

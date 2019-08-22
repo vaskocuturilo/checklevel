@@ -1,4 +1,4 @@
-## http://www.yandex.ru 
+## parse for http://www.yandex.ru 
 
 ### Set up
 
