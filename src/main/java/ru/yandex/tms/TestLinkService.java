@@ -13,7 +13,7 @@ import static ru.yandex.utils.PropertiesReader.loadProperty;
 /**
  * The type Test link.
  */
-public class TestLinkService {
+public final class TestLinkService {
 
     /**
      * Constant LOG.
@@ -44,9 +44,6 @@ public class TestLinkService {
      * Default constructor.
      */
     public TestLinkService() {
-        super();
-        //empty
-        return;
     }
 
     /**

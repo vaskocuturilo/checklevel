@@ -9,7 +9,6 @@ import org.openqa.selenium.support.CacheLookup;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
 import org.openqa.selenium.support.ui.ExpectedCondition;
-import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import ru.yandex.tms.TestLinkService;
 
@@ -23,6 +22,12 @@ import static org.testng.Assert.assertEquals;
  */
 @SuppressWarnings({"PMD.LawOfDemeter", "PMD.BeanMembersShouldSerialize", "PMD.GuardLogStatement"})
 public class ImagesPage extends AbstractPageObject {
+
+    /**
+     * CONSTANT DELAY.
+     */
+    private static final int DELAY = 10;
+
     /**
      * Value IMAGES.
      */
@@ -75,11 +80,11 @@ public class ImagesPage extends AbstractPageObject {
 
         imagesTab.click();
 
-        final WebElement voiceElement = (new WebDriverWait(getDriver(), 10))
+        final WebElement voiceElement = (new WebDriverWait(getDriver(), DELAY))
                 .until(new ExpectedCondition<WebElement>() {
                     @NullableDecl
                     @Override
-                    public WebElement apply(@NullableDecl WebDriver webDriver) {
+                    public WebElement apply(@NullableDecl final WebDriver webDriver) {
                         return webDriver.findElement(By.cssSelector(VOICE_BUTTON));
                     }
                 });
