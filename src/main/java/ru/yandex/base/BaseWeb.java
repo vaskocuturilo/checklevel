@@ -59,10 +59,10 @@ public class BaseWeb {
             driver = threadLocal.get();
             return;
         }
-        if ("chrome".equals(browser)) {
+        if ("chrome".equalsIgnoreCase(browser)) {
             ChromeDriverManager.getInstance(DriverManagerType.CHROME).setup();
             driver = new ChromeDriver();
-        } else if ("firefox".equals(browser)) {
+        } else if ("firefox".equalsIgnoreCase(browser)) {
             ChromeDriverManager.getInstance(DriverManagerType.FIREFOX).setup();
             driver = new FirefoxDriver();
         } else {
