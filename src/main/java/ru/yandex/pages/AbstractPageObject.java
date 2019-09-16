@@ -44,4 +44,9 @@ public abstract class AbstractPageObject {
         return driver.getTitle();
     }
 
+    /**
+     * Abstract method abstractPageObject.
+     */
+    public abstract void abstractPageObject();
+
 }

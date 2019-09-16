@@ -71,6 +71,10 @@ public class ImagesPage extends AbstractPageObject {
         super(webDriver);
     }
 
+    @Override
+    public void abstractPageObject() {
+    }
+
     /**
      * Method selectImagesTab.
      *
